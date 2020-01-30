@@ -16,38 +16,9 @@ import { useCart } from './hooks/useCart';
 
 function App() {
 	const [products] = useState(data);
-	const [cart, setCart] = useCart([]);
+	const [cart, setCart, addItem, removeItem] = useCart([]);
 
-	const addItem = item => {
-		console.log('addItem', item);
-		const cartID = Date.now();
 
-		console.log(cartID);
-
-		const product = { ...item, cartID: cartID };
-		// item.cartID = cartID;
-
-		setCart([...cart, product]);
-		console.log('Cart', cart);
-		console.log('Added to Cart', item);
-	};
-
-	const removeItem = item => {
-		console.log('removeItem', item);
-		const newCart = [];
-		cart.map(product => {
-			if (product.cartID !== item) {
-				newCart.push(product);
-				console.log(product);
-			}
-		});
-
-		console.log('New Cart', newCart);
-
-		setCart(newCart);
-
-		// console.log('Removed from Cart');
-	};
 
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
