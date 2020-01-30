@@ -10,7 +10,7 @@ export const useCart = initialValue => {
 	};
 
 	const removeItem = item => {
-		const newCart = cart.filter(item => item.cartID !== item);
+		const newCart = cart.filter(product => product.cartID !== item);
 		setCart(newCart);
 	};
 
