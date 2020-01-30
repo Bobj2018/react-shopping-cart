@@ -20,5 +20,5 @@ export const useCart = initialValue => {
 		setCart(newCart);
 	};
 
-	return [cart, setCart, addItem, removeItem];
+	return [cart, addItem, removeItem];
 };

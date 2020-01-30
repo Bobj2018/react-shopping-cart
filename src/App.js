@@ -16,9 +16,7 @@ import { useCart } from './hooks/useCart';
 
 function App() {
 	const [products] = useState(data);
-	const [cart, setCart, addItem, removeItem] = useCart([]);
-
-
+	const [cart, addItem, removeItem] = useCart([]);
 
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
