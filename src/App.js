@@ -11,9 +11,12 @@ import ShoppingCart from './components/ShoppingCart';
 import ProductContext from './contexts/ProductContext';
 import CartContext from './contexts/CartContext';
 
+//Hooks
+import { useCart } from './hooks/useCart';
+
 function App() {
 	const [products] = useState(data);
-	const [cart, setCart] = useState([]);
+	const [cart, setCart] = useCart([]);
 
 	const addItem = item => {
 		console.log('addItem', item);
