@@ -17,29 +17,38 @@ function App() {
 
 	const addItem = item => {
 		console.log('addItem', item);
-		setCart([...cart, item]);
-		console.log('Added to Cart');
+		const cartID = Date.now();
+
+		console.log(cartID);
+
+		const product = { ...item, cartID: cartID };
+		// item.cartID = cartID;
+
+		setCart([...cart, product]);
+		console.log('Cart', cart);
+		console.log('Added to Cart', item);
 	};
 
 	const removeItem = item => {
-		console.log('removeItem', item)
+		console.log('removeItem', item);
 		const newCart = [];
-		cart.map(task => {
-			if (task.id !== item) {
-				newCart.push(task);
+		cart.map(product => {
+			if (product.cartID !== item) {
+				newCart.push(product);
+				console.log(product);
 			}
-		})
+		});
 
+		console.log('New Cart', newCart);
 
+		setCart(newCart);
 
-		setCart(newCart)
-		
-		console.log('Removed from Cart')
-	}
+		// console.log('Removed from Cart');
+	};
 
 	return (
-		<ProductContext.Provider value={{ products, addItem}}>
-			<CartContext.Provider value={{cart, removeItem}}>
+		<ProductContext.Provider value={{ products, addItem }}>
+			<CartContext.Provider value={{ cart, removeItem }}>
 				<div className='App'>
 					<Navigation />
 
